@@ -7,7 +7,7 @@ const {
   GraphQLList,
   GraphQLInt,
   GraphQLNonNull
-} = require('graphql')
+}  = require('graphql')
 const app = express()
 
 /* 
@@ -153,14 +153,29 @@ const RootMutationType = new GraphQLObjectType({
     }
   })
 })
+/*
+This is the main schema, which we pass into the expressGraphQL function.
+By the help of the schema our program knows what data to access when we send the query
 
+Here we are passing in RootQueryType which have all the logic to get the data
+Also, RootMutationType which have all the logic to mutate the data
+*/
 const schema = new GraphQLSchema({
   query: RootQueryType,
   mutation: RootMutationType
 })
 
+/*
+  We need to pass in the schema in the expressGraphQL function beacuse the way that graphQL knows which 
+  data to access based on the query that we send is by the help of this schema.
+  Schema shows how all of our data interacts together and that schema is what we need to pass into 
+  expressGraphQL function. 
+
+  The `graphiql: true` option gives us the actual user interface to access our graphQL without 
+  having to call through postman
+*/
 app.use('/graphql', expressGraphQL({
   schema: schema,
-  graphiql: true
+  graphiql: true 
 }))
 app.listen(5000, () => console.log('Server Running'))

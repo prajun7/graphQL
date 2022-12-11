@@ -37,12 +37,23 @@ See comments in code for better understanding.
 We are creating `RootQueryType` in our code
 ### To GET all the books with id, name and authorId
 ```
+query {
+	books {
+		name,
+		id,
+		authorId
+	}
+}
+```
+We can remove the above query because by default GraphQL always represents the query,
+So, we can also get the same result by,
+```
 {
-  books {
-    name,
-    id,
-	authorId
-  }
+	books {
+		name,
+		id,
+		authorId
+	}
 }
 ```
 Here we can modify the query to just get name and id only.<br>
@@ -113,5 +124,5 @@ mutation {
 Here we are adding the new book with authorId of 1. And returning that book's id and name.
 Now if we run the query to get all of the Books we will see the new book that we have added.
 If we restart the server the new book is going to disappeared because we are not actually persisiting to the databse.
-Similarly we can do the same for Author.
+Similarly we can do the same for the Author.
 
