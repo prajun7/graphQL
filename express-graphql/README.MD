@@ -106,7 +106,7 @@ Here we get the list of all the books for each author.<br>
 In normal `REST APIs,` this will require running one query for the authors, and another query for author 1,author 2, and author 3. 
 So, it will 4 total queries and will also return a bunch of unnecessary data we don't want. 
 
-## Modifying data (Same as POST, PUT, DELETE on REST APIS)
+## Modifying data (Same as POST, PUT, DELETE on REST APIs)
 For modifying the data we used mutations. Mutations are GraphQL version of using POST, PUT
 and DELETE on a rest API server.
 We are creating `RootMutationType` in our code
