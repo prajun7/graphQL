@@ -15,4 +15,4 @@ GraphQL simplifies the task of aggregating data from multiple sources or APIs an
  The main benefit of using GraphQL is the ability to send a query that specifies only the information we need and receiving exactly that. However, we can achieve this same effect using REST, by passing the name of the fields we want to use in the URL, then implementing the parsing and returning logic yourself: `GET /books/1492030716?fields=title,pageCount`
 
 ### Couple of Sub-Project to Learn GraphQL
- - express-graphQL
+ - express-graphql

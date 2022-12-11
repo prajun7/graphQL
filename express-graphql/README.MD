@@ -1,5 +1,6 @@
 Leaning GraphQL by building APIs using Node.js and Express-GraphQL for books and authors.
 - By Web Dev Simplified
+- https://www.youtube.com/watch?v=ZQL7tL2S0oQ
 
 Using authors and books list instead of connecting with database.
 
@@ -25,3 +26,69 @@ books = [
 We have a `books` table which has foreign key for the authors `table`
 
 See comments in code for better understanding.
+
+## To Run
+- npm install
+- npm run devStart
+(check package.json file)
+- go to localhost:5000/graphql
+
+### To GET all the books with id, name and authorId
+```
+{
+  books {
+    name,
+    id,
+	authorId
+  }
+}
+```
+Here we can modify the query to just ger name and id only.
+This is the beauty of GraphQL.
+We can do similar to get all the books.
+
+### To GET the single author with id and name
+We need to pass the id of the author as the arg parameter
+```
+{
+	author(id: 2) {
+		name
+	}
+}
+```
+We can do similar to get the single book. We need to pass the id of the book that we want
+
+### To GET the `book' name` and `name of the author` who wrote that book
+Since `books` and `authors` table are realted with each other with teh foreign key.
+We can get the book and by using the `authorId` we can get the name of the author as well.
+We need to add the authors field inside the books.
+```
+{
+	books {
+		id,
+		name,
+		author {
+			name
+		}
+	}
+}
+```
+We will get the author inside the book array.
+
+### To GET list of all the books for each authors
+We need to add the books field inside the authors.
+```
+{
+	authors {
+		id,
+		name,
+		books {
+			name
+		}
+	}
+}
+```
+Here we get list of all the books for each authors
+In normal `REST APIs` this will require to run one query for the authors, another query for author 1,
+author 2, author 3 and so on. So, it will 4 total query and will also return bunch of unnecessay data we don't actually want.
+
