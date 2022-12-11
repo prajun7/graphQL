@@ -10,6 +10,10 @@ const {
 } = require('graphql')
 const app = express()
 
+/* 
+  Imitates how the database will look like
+  We are not using any database instead we are using list of authors and books as our database
+*/
 const authors = [
 	{ id: 1, name: 'J. K. Rowling' },
 	{ id: 2, name: 'J. R. R. Tolkien' },
@@ -28,18 +32,22 @@ const books = [
 ]
 
 /*
+  Creating BookType
+
+   - fields is used to define what the BookType returns and it should be a function which returns an object
+   - fileds is a funciton which is returning an object including books' information like id, name and authorId
 
   fields: () => ({
     ...
-  }), Here fields is returning a function instaed of an actualy object.
+  }), 
+  Here fields is returning a function instaed of an actualy object.
   It is returning a function that retuns an object.
   And the reason we are returning a function that returns an object instead of returning just an object is,
   that BookType references AuthorType, that is we need AuthorType to be defined before BookType.
   Also, if we look at AuthorType, we can see that AuthorType references BookType.
   So, both the BookType and AuthorType depend on each other.
   If we just return an object from the fields, we will get AuthorType is not defined or BookType is not defined error
-  SO, that we need to return a function, so that everything can get defined before they actually getting
-  called.
+  So, that we need to return a function, so that everything can get defined before they actually getting called.
 */
 const BookType = new GraphQLObjectType({
   name: 'Book',
@@ -72,6 +80,12 @@ const AuthorType = new GraphQLObjectType({
   })
 })
 
+/*
+  RootQueryType is used to query or GET the data from the database
+  It has logic to get both the books and authors
+  All the GET queries will be in RootQueryType
+  It is using the AuthorType and BookType that we had defined at the top
+*/
 const RootQueryType = new GraphQLObjectType({
   name: 'Query',
   description: 'Root Query',
@@ -105,6 +119,9 @@ const RootQueryType = new GraphQLObjectType({
   })
 })
 
+/*
+  RootMutationType is used to mutate the data (same as DELETE, PUT, UPDATE in REST APIS)
+*/
 const RootMutationType = new GraphQLObjectType({
   name: 'Mutation',
   description: 'Root Mutation',
