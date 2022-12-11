@@ -23,7 +23,7 @@ books = [
 ]
 ```
 
-We have a `books` table which has foreign key for the authors `table`
+We have a `books` table which has foreign key for the `authors` table.
 
 See comments in code for better understanding.
 
@@ -43,9 +43,9 @@ See comments in code for better understanding.
   }
 }
 ```
-Here we can modify the query to just ger name and id only.
-This is the beauty of GraphQL.
-We can do similar to get all the books.
+Here we can modify the query to just ger name and id only.<br>
+This is the beauty of GraphQL.<br>
+We can do similar to get all the authors.<br>
 
 ### To GET the single author with id and name
 We need to pass the id of the author as the arg parameter
@@ -56,10 +56,11 @@ We need to pass the id of the author as the arg parameter
 	}
 }
 ```
-We can do similar to get the single book. We need to pass the id of the book that we want
+We can do similar to get the single book.<br>
+We need to pass the id of the book that we want<br>
 
 ### To GET the `book' name` and `name of the author` who wrote that book
-Since `books` and `authors` table are realted with each other with teh foreign key.
+Since `books` and `authors` table are related with each other with the foreign key.
 We can get the book and by using the `authorId` we can get the name of the author as well.
 We need to add the authors field inside the books.
 ```
@@ -88,7 +89,7 @@ We need to add the books field inside the authors.
 	}
 }
 ```
-Here we get list of all the books for each authors
+Here we get list of all the books for each authors.<br>
 In normal `REST APIs` this will require to run one query for the authors, another query for author 1,
-author 2, author 3 and so on. So, it will 4 total query and will also return bunch of unnecessay data we don't actually want.
+author 2, and author 3. So, it will 4 total query and will also return bunch of unnecessay data we don't actually want. 
 
