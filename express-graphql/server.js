@@ -85,10 +85,20 @@ const AuthorType = new GraphQLObjectType({
   It has logic to get both the books and authors
   All the GET queries will be in RootQueryType
   It is using the AuthorType and BookType that we had defined at the top
+
+  Inside the fields we have the query for getting a single book, books, authors and a single author.
+  It also consists of a funciton called resolve, which takes two arguments,
+    1. parent -> the parent itself
+    2. arges -> this is the object of all the arguments that we provide from the frontend
+  resolve function consists of a logic to get the book or books.
+  It is the funciton that has the logic which is needed to execute when we send the query.
+  If we had the database connection, the resolve function will hold the logic to 
+  get data from the database.
+  In RootMutationType, resolve function holds the logic to update or delete the data
 */
 const RootQueryType = new GraphQLObjectType({
   name: 'Query',
-  description: 'Root Query',
+  description: 'Root Query to get the required information',
   fields: () => ({
     book: {
       type: BookType,
@@ -103,11 +113,6 @@ const RootQueryType = new GraphQLObjectType({
       description: 'List of All Books',
       resolve: () => books
     },
-    authors: {
-      type: new GraphQLList(AuthorType),
-      description: 'List of All Authors',
-      resolve: () => authors
-    },
     author: {
       type: AuthorType,
       description: 'A Single Author',
@@ -115,7 +120,12 @@ const RootQueryType = new GraphQLObjectType({
         id: { type: GraphQLInt }
       },
       resolve: (parent, args) => authors.find(author => author.id === args.id)
-    }
+    },
+    authors: {
+      type: new GraphQLList(AuthorType),
+      description: 'List of All Authors',
+      resolve: () => authors
+    },
   })
 })
 
@@ -148,6 +158,34 @@ const RootMutationType = new GraphQLObjectType({
       resolve: (parent, args) => {
         const author = { id: authors.length + 1, name: args.name }
         authors.push(author)
+        return author
+      }
+    },
+    updateBook: {
+      type: BookType,
+      description: 'Updates the name and authorID of the book.',
+      args: {
+        id: { type: GraphQLNonNull(GraphQLInt) },
+        name: { type: GraphQLNonNull(GraphQLString) },
+        authorId: { type: GraphQLInt }
+      },
+      resolve: (parent, args) => {
+        const book = books.find(book => book.id === args.id)
+        book.name = args.name
+        book.authorId = args.authorId
+        return book
+      }
+    },
+    updateAuthor: {
+      type: AuthorType,
+      description: 'Update the name of the author',
+      args: {
+        id: { type: GraphQLNonNull(GraphQLInt) },
+        name: { type: GraphQLNonNull(GraphQLString) }
+      },
+      resolve: (parent, args) => {
+        const author = authors.find(author => author.id === args.id)
+        author.name = args.name
         return author
       }
     }
