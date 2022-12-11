@@ -1,4 +1,4 @@
-Learning GraphQL
+# Learning GraphQL
 
 GraphQL is the popular technology when it comes to server side APIs for good reason. It is incredibly fast to develop with, and it makes building a front-end painlessly easy.
 
@@ -12,9 +12,7 @@ GraphQL simplifies the task of aggregating data from multiple sources or APIs an
 
  A REST API might be easier to design compare to GraphQL because we can establish multiple endpoints for specific needs, and we can fine-tune specific queries to retrieve the data in an efficient way.
 
- The main benefit of using GraphQL is the ability to send a query that specifies only the information we need and receiving exactly that. However, we can achieve this same effect using REST, by passing the name of the fields we want to use in the URL, then implementing the parsing and returning logic yourself:
+ The main benefit of using GraphQL is the ability to send a query that specifies only the information we need and receiving exactly that. However, we can achieve this same effect using REST, by passing the name of the fields we want to use in the URL, then implementing the parsing and returning logic yourself: `GET /books/1492030716?fields=title,pageCount`
 
-`GET /books/1492030716?fields=title,pageCount`
-
-Couple of Sub-Project to Learn GraphQL
+### Couple of Sub-Project to Learn GraphQL
  - express-graphql
