@@ -126,3 +126,31 @@ Now if we run the query to get all of the Books we will see the new book that we
 If we restart the server the new book is going to disappeared because we are not actually persisiting to the databse.
 Similarly we can do the same for the Author.
 
+## Some examples,
+
+Getting all the authors with just the name
+<img width="889" alt="Screen Shot 2022-12-11 at 4 10 39 PM" src="https://user-images.githubusercontent.com/67757251/206929348-b93fa7e8-c0dd-4f16-b9b1-44a7723916fc.png">
+
+Getting all the authors with the name and id
+<img width="825" alt="Screen Shot 2022-12-11 at 4 10 50 PM" src="https://user-images.githubusercontent.com/67757251/206929352-721fb447-4cd2-4cb2-929e-aa76ecc257be.png">
+
+Getting all the books with the name, id and authorId
+<img width="1073" alt="Screen Shot 2022-12-11 at 4 11 11 PM" src="https://user-images.githubusercontent.com/67757251/206929353-f42585d2-8e1a-40c3-ad45-0f2c27de06d9.png">
+
+Getting all the books with the book name, id and name of the author
+<img width="1072" alt="Screen Shot 2022-12-11 at 4 11 32 PM" src="https://user-images.githubusercontent.com/67757251/206929354-92836b58-ee53-419a-b4b3-731d7022dbaf.png">
+
+Getting all the authors and also getting all the name of the books that they have written
+<img width="1073" alt="Screen Shot 2022-12-11 at 4 13 40 PM" src="https://user-images.githubusercontent.com/67757251/206929336-8518d05c-27a4-42d7-94c6-5985fac5c178.png">
+
+Getting the single author by passing the author id
+<img width="983" alt="Screen Shot 2022-12-11 at 4 28 56 PM" src="https://user-images.githubusercontent.com/67757251/206929868-fa5a3073-2875-4400-8310-489a9491c16b.png">
+
+Getting the single book by passing the book id
+<img width="1083" alt="Screen Shot 2022-12-11 at 4 29 28 PM" src="https://user-images.githubusercontent.com/67757251/206929884-2104c183-3ffb-48f0-8534-d240e93056d3.png">
+
+Using the mutation, i.e. adding the book
+<img width="1086" alt="Screen Shot 2022-12-11 at 4 15 48 PM" src="https://user-images.githubusercontent.com/67757251/206929338-87723c23-cf74-4e6a-adce-0d464a241d6c.png">
+
+
+
