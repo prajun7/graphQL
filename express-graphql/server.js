@@ -27,6 +27,20 @@ const books = [
 	{ id: 8, name: 'Beyond the Shadows', authorId: 3 }
 ]
 
+/*
+
+  fields: () => ({
+    ...
+  }), Here fields is returning a function instaed of an actualy object.
+  It is returning a function that retuns an object.
+  And the reason we are returning a function that returns an object instead of returning just an object is,
+  that BookType references AuthorType, that is we need AuthorType to be defined before BookType.
+  Also, if we look at AuthorType, we can see that AuthorType references BookType.
+  So, both the BookType and AuthorType depend on each other.
+  If we just return an object from the fields, we will get AuthorType is not defined or BookType is not defined error
+  SO, that we need to return a function, so that everything can get defined before they actually getting
+  called.
+*/
 const BookType = new GraphQLObjectType({
   name: 'Book',
   description: 'This represents a book written by an author',

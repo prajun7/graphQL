@@ -33,6 +33,8 @@ See comments in code for better understanding.
 (check package.json file)
 - go to localhost:5000/graphql
 
+## Getting data
+We are creating `RootQueryType` in our code
 ### To GET all the books with id, name and authorId
 ```
 {
@@ -92,4 +94,24 @@ We need to add the books field inside the authors.
 Here we get the list of all the books for each author.<br>
 In normal `REST APIs,` this will require running one query for the authors, and another query for author 1,author 2, and author 3. 
 So, it will 4 total queries and will also return a bunch of unnecessary data we don't want. 
+
+## Modifying data (Same as POST, PUT, DELETE on REST APIS)
+For modifying the data we used mutations. Mutations are GraphQL version of using POST, PUT
+and DELETE on a rest API server.
+We are creating `RootMutationType` in our code
+
+### To Add a Book
+We need to use `mutation` keyword because by default GraphQl uses `query` but we won't to use `mutation`. 
+```
+mutation {
+	addBook (name: "New Book", authorId: 1) {
+		id
+		name
+	}
+}
+```
+Here we are adding the new book with authorId of 1. And returning that book's id and name.
+Now if we run the query to get all of the Books we will see the new book that we have added.
+If we restart the server the new book is going to disappeared because we are not actually persisiting to the databse.
+Similarly we can do the same for Author.
 
